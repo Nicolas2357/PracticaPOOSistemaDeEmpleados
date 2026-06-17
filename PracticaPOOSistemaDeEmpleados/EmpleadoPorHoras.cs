@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PracticaPOOSistemaDeEmpleados.Modelos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PracticaPOOSistemaDeEmpleados
 {
-    public class EmpleadoPorHoras : Empleado
+    public class EmpleadoPorHoras : Empleado, IEvaluable
     {
         public int HorasTrabajadas { get; set; }
         public decimal TarifaPorHora { get; set; }
@@ -30,6 +31,11 @@ namespace PracticaPOOSistemaDeEmpleados
             Console.WriteLine($"Tipo: Por horas");
             Console.WriteLine($"Horas trabajadas: {HorasTrabajadas}");
             Console.WriteLine($"Tarifa por hora: {TarifaPorHora:C}");
+        }
+        public string GenerarReporteDesempeño()
+        {
+            string nivel = HorasTrabajadas >= 160 ? "alta carga laboral" : "carga laboral moderada";
+            return $"{Nombre} trabajó {HorasTrabajadas} horas este periodo, lo cual representa {nivel}.";
         }
     }
 }

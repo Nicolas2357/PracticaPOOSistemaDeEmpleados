@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PracticaPOOSistemaDeEmpleados.Modelos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PracticaPOOSistemaDeEmpleados
 {
-    public class EmpleadoTiempoCompleto : Empleado
+    public class EmpleadoTiempoCompleto : Empleado, IEvaluable
     {
         public decimal BonoMensual { get; set; }
 
@@ -28,5 +29,10 @@ namespace PracticaPOOSistemaDeEmpleados
             Console.WriteLine($"Tipo: Tiempo completo");
             Console.WriteLine($"Bono mensual: {BonoMensual:C}");
         }
+        public string GenerarReporteDesempeño()
+        {
+            return $"{Nombre} es empleado de tiempo completo. Recibe un bono fijo mensual de {BonoMensual:C}, lo cual indica estabilidad salarial.";
+        }
     }
+    
 }
